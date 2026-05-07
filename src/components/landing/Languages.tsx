@@ -35,24 +35,26 @@ export function Languages() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="mt-12 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6">
           {languages.map((l) => (
             <div
               key={l.name}
-              className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+              className="group flex flex-col items-center justify-center gap-3 p-2"
             >
-              <div className="overflow-hidden rounded-md ring-1 ring-border/60 shadow-sm">
-                <img
-                  src={`https://flagcdn.com/w160/${l.code}.png`}
-                  srcSet={`https://flagcdn.com/w320/${l.code}.png 2x`}
-                  alt={`${l.name} flag`}
-                  width={64}
-                  height={42}
-                  loading="lazy"
-                  className="block h-[42px] w-[64px] object-cover"
-                />
+              <div className="relative">
+                <span className="absolute inset-0 -z-10 rounded-full bg-primary/20 blur-md transition group-hover:bg-primary/40" />
+                <div className="relative size-16 overflow-hidden rounded-full border-4 border-white shadow-[0_4px_14px_rgba(0,0,0,0.15)] ring-2 ring-primary/20 transition group-hover:scale-110 group-hover:ring-primary/60">
+                  <img
+                    src={`https://flagcdn.com/w160/${l.code}.png`}
+                    srcSet={`https://flagcdn.com/w320/${l.code}.png 2x`}
+                    alt={`${l.name} flag`}
+                    loading="lazy"
+                    className="block h-full w-full object-cover"
+                  />
+                </div>
+                <span className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rounded-full bg-primary shadow-md" />
               </div>
-              <span className="text-base font-semibold tracking-tight text-foreground">
+              <span className="text-sm font-semibold tracking-tight text-foreground">
                 {l.name}
               </span>
             </div>
