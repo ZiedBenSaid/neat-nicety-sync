@@ -26,9 +26,7 @@ export function Navbar() {
   const navLinks = [
     { label: t("nav.home"), target: "home" },
     { label: t("nav.services"), target: "documents" },
-    { label: t("nav.usecases"), target: "usecases" },
     { label: t("nav.reviews"), target: "reviews" },
-    { label: t("nav.blog"), target: "blog" },
     { label: t("nav.contact"), target: "contact" },
   ];
 
