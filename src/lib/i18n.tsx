@@ -260,6 +260,8 @@ const dictionaries: Record<Lang, Dict> = {
     "quote.page.turnaround": "Turnaround preference",
     "quote.page.submit": "Request Quote",
     "quote.page.success": "Thank you! We will get back to you within one hour.",
+  },
+  DE: {
     // Nav
     "nav.home": "Startseite",
     "nav.services": "Leistungen",
