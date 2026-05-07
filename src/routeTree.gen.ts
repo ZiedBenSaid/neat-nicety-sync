@@ -15,6 +15,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as OrderRouteImport } from './routes/order'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as AgbRouteImport } from './routes/agb'
@@ -51,6 +52,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderRoute = OrderRouteImport.update({
+  id: '/order',
+  path: '/order',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/agb': typeof AgbRoute
   '/cart': typeof CartRoute
   '/impressum': typeof ImpressumRoute
+  '/order': typeof OrderRoute
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
   '/reviews': typeof ReviewsRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/agb': typeof AgbRoute
   '/cart': typeof CartRoute
   '/impressum': typeof ImpressumRoute
+  '/order': typeof OrderRoute
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
   '/reviews': typeof ReviewsRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/agb': typeof AgbRoute
   '/cart': typeof CartRoute
   '/impressum': typeof ImpressumRoute
+  '/order': typeof OrderRoute
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
   '/reviews': typeof ReviewsRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/agb'
     | '/cart'
     | '/impressum'
+    | '/order'
     | '/privacy'
     | '/quote'
     | '/reviews'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/agb'
     | '/cart'
     | '/impressum'
+    | '/order'
     | '/privacy'
     | '/quote'
     | '/reviews'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/agb'
     | '/cart'
     | '/impressum'
+    | '/order'
     | '/privacy'
     | '/quote'
     | '/reviews'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   AgbRoute: typeof AgbRoute
   CartRoute: typeof CartRoute
   ImpressumRoute: typeof ImpressumRoute
+  OrderRoute: typeof OrderRoute
   PrivacyRoute: typeof PrivacyRoute
   QuoteRoute: typeof QuoteRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/impressum': {
       id: '/impressum'
       path: '/impressum'
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   AgbRoute: AgbRoute,
   CartRoute: CartRoute,
   ImpressumRoute: ImpressumRoute,
+  OrderRoute: OrderRoute,
   PrivacyRoute: PrivacyRoute,
   QuoteRoute: QuoteRoute,
   ReviewsRoute: ReviewsRoute,
@@ -271,3 +292,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
