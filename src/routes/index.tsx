@@ -39,6 +39,7 @@ function Index() {
         <div id="documents">
           <GermanDocuments />
         </div>
+        <Languages />
         <AcceptanceGuarantee />
         <div id="reviews">
           <Reviews />
