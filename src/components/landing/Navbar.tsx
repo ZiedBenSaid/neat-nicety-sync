@@ -26,9 +26,7 @@ export function Navbar() {
   const navLinks = [
     { label: t("nav.home"), target: "home" },
     { label: t("nav.services"), target: "documents" },
-    { label: t("nav.usecases"), target: "usecases" },
     { label: t("nav.reviews"), target: "reviews" },
-    { label: t("nav.blog"), target: "blog" },
     { label: t("nav.contact"), target: "contact" },
   ];
 
@@ -97,22 +95,12 @@ export function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          {onHome ? (
-            <a
-              href="#quote-form"
-              onClick={(e) => { e.preventDefault(); document.getElementById("quote-form")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
-              className="hidden items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm shadow-primary/20 transition hover:scale-[1.03] hover:bg-primary/90 lg:inline-flex"
-            >
-              {t("nav.quote")}
-            </a>
-          ) : (
-            <Link
-              to="/quote"
-              className="hidden items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm shadow-primary/20 transition hover:scale-[1.03] hover:bg-primary/90 lg:inline-flex"
-            >
-              {t("nav.quote")}
-            </Link>
-          )}
+          <Link
+            to="/quote"
+            className="hidden items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm shadow-primary/20 transition hover:scale-[1.03] hover:bg-primary/90 lg:inline-flex"
+          >
+            {t("nav.quote")}
+          </Link>
           <button aria-label="Search" className="grid size-9 place-items-center rounded-md text-foreground/70 transition hover:bg-muted hover:text-foreground">
             <Search className="size-4" />
           </button>
