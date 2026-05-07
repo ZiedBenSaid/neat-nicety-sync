@@ -98,39 +98,39 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col flex-wrap items-stretch gap-3 sm:flex-row sm:items-center md:justify-start">
-              <a
-                href="#quote-form"
-                onClick={(e) => { e.preventDefault(); document.getElementById("quote-form")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+              <Link
+                to="/order"
                 className="relative z-20 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-xl shadow-primary/40 ring-1 ring-primary/40 transition hover:scale-[1.03] hover:bg-primary/90 sm:w-auto"
               >
-                Get My Certified Translation <ArrowRight className="size-5" />
-              </a>
-              <a
-                href="#pricing"
-                onClick={(e) => { e.preventDefault(); document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                {t("hero.cta")} <ArrowRight className="size-5" />
+              </Link>
+              <Link
+                to="/quote"
                 className="relative z-20 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-7 py-4 text-base font-semibold text-navy-foreground backdrop-blur transition hover:border-white/40 hover:bg-white/10 sm:w-auto"
               >
-                See pricing — from $25/page
-              </a>
+                {t("hero.cta.secondary")}
+              </Link>
             </div>
 
             <p className="-mt-1 text-center text-xs font-semibold text-highlight md:text-left">
               ⏱ {t("micro.deliveryHero")}
             </p>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-2 md:justify-start md:pt-4">
+            {/* ISO certification badges */}
+            <div className="flex flex-col items-stretch gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center md:justify-start md:pt-4">
               {[
-                { icon: Lock, label: "256-bit Secure Upload" },
-                { icon: BadgeCheck, label: "100% USCIS Acceptance" },
-                { icon: Headphones, label: "24/7 Expert Support" },
-                { icon: ShieldCheck, label: "ISO 17100 Certified" },
+                { icon: Award, label: "ISO 9001", subKey: "iso.9001.sub" },
+                { icon: ShieldCheck, label: "ISO 27001", subKey: "iso.27001.sub" },
+                { icon: FileCheck2, label: "ISO 17100", subKey: "iso.17100.sub" },
               ].map((b) => {
                 const Icon = b.icon;
                 return (
-                  <span key={b.label} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-navy-foreground/90 backdrop-blur">
-                    <Icon className="size-3.5 text-highlight" />
-                    {b.label}
+                  <span key={b.label} className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-left backdrop-blur">
+                    <Icon className="size-5 shrink-0 text-highlight" />
+                    <span className="flex flex-col leading-tight">
+                      <span className="text-xs font-bold tracking-wide text-navy-foreground">{b.label}</span>
+                      <span className="text-[10px] font-medium text-navy-foreground/70">{t(b.subKey)}</span>
+                    </span>
                   </span>
                 );
               })}
