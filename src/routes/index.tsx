@@ -9,6 +9,7 @@ import { Footer } from "@/components/landing/Footer";
 import { FloatingContact } from "@/components/landing/FloatingContact";
 import { GermanProcess } from "@/components/landing/GermanProcess";
 import { GermanDocuments } from "@/components/landing/GermanDocuments";
+import { Languages } from "@/components/landing/Languages";
 import { StickyMobileCTA } from "@/components/landing/StickyMobileCTA";
 
 export const Route = createFileRoute("/")({
@@ -38,6 +39,7 @@ function Index() {
         <div id="documents">
           <GermanDocuments />
         </div>
+        <Languages />
         <AcceptanceGuarantee />
         <div id="reviews">
           <Reviews />
