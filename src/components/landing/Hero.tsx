@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ShieldCheck, Lock, Headphones, BadgeCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, Award, FileCheck2 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import heroStamp from "@/assets/hero-stamp.jpg";
