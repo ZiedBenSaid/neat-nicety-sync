@@ -8,12 +8,74 @@ const dictionaries: Record<Lang, Dict> = {
   EN: {
     // Nav
     "nav.home": "Home",
+    "nav.documents": "Documents",
     "nav.services": "Services",
+    "nav.why": "Why Us",
+    "nav.faq": "FAQ",
     "nav.usecases": "Use Cases",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
     "nav.reviews": "Reviews",
     "nav.quote": "Get a Quote",
+
+    // ISO badge titles & subtitles
+    "iso.9001.t": "ISO 9001",
+    "iso.27001.t": "ISO 27001",
+    "iso.17100.t": "ISO 17100",
+
+    // Process
+    "process.kicker": "How it Works",
+    "process.title.a": "Easy & Simple",
+    "process.title.b": "3-Step",
+    "process.title.c": "Process",
+    "process.subtitle": "We've streamlined our process to get your certified translation as fast as possible without compromising on quality.",
+    "process.s1.t": "Upload your document",
+    "process.s1.d": "Scan or photo of your document — 100% GDPR-compliant transfer.",
+    "process.s2.t": "Get fixed price & pay",
+    "process.s2.d": "You receive an instant binding fixed price. Pay securely by SEPA, card or PayPal.",
+    "process.s3.t": "Receive certified translation",
+    "process.s3.d": "Digital PDF in 24 hours, original by registered post with stamp & signature.",
+    "process.cta": "Get Translated Now",
+
+    // Cant find
+    "cantfind.title": "Can't find your document?",
+    "cantfind.sub": "No problem. We translate all types of documents. Contact us and we will help you right away.",
+    "cantfind.cta": "Contact Us",
+
+    // Services
+    "services.kicker": "Our Services",
+    "services.title": "Our Services",
+    "services.subtitle": "Professional translation solutions for every need.",
+    "services.learn": "Learn more",
+    "services.s1.t": "Certified Translation",
+    "services.s1.d": "Professional certified translations accepted by all German authorities including Ausländerbehörde, Standesamt, BAMF and courts.",
+    "services.s2.t": "Notarization",
+    "services.s2.d": "Additional notarization service for documents requiring official notary stamp for legal proceedings.",
+    "services.s3.t": "Express Translation",
+    "services.s3.d": "24-hour and same-day certified translation for urgent deadlines and last-minute submissions.",
+    "services.s4.t": "Hard Copy Delivery",
+    "services.s4.d": "Physical certified translation delivered by post anywhere in Germany with tracking.",
+    "services.s5.t": "Specialized Translation",
+    "services.s5.d": "Expert translation for medical, legal, technical and academic documents requiring subject-matter expertise.",
+    "services.s6.t": "Business Translation",
+    "services.s6.d": "Bulk translation solutions for companies, law firms, HR departments and universities.",
+
+    // Why choose
+    "why.title": "Why Choose CertiLingua?",
+    "why.subtitle": "We are not just another translation service. We are your trusted partner for official documents.",
+    "why.cta": "Request Your Translation Now",
+    "why.c1.t": "100% Acceptance Guarantee",
+    "why.c1.d": "Our translations are accepted by all German authorities — or we redo it completely free of charge.",
+    "why.c2.t": "24–48 Hour Delivery",
+    "why.c2.d": "Fast, reliable delivery without compromising quality. Express and same-day orders available.",
+    "why.c3.t": "Certified Translators",
+    "why.c3.d": "All our translators are state-recognized, ISO 17100 certified with years of experience handling official documents.",
+    "why.c4.t": "Maximum Data Security",
+    "why.c4.d": "Your sensitive documents are protected with 256-bit encryption. ISO 27001 certified. All documents securely deleted after 30 days.",
+    "why.c5.t": "Transparent Pricing",
+    "why.c5.d": "No hidden fees. €24 per page, everything included. You know exactly what you pay before ordering.",
+    "why.c6.t": "Personal Support",
+    "why.c6.d": "Our team is reachable by email and WhatsApp. We respond within one hour and guide you through the entire process.",
 
     // Hero
     "hero.badge": "ISO 17100 · 100% Acceptance Guarantee",
