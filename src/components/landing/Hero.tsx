@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ShieldCheck, Award, FileCheck2 } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n";
@@ -117,23 +117,55 @@ export function Hero() {
             </p>
 
             {/* ISO certification badges */}
-            <div className="flex flex-col items-stretch gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center md:justify-start md:pt-4">
+            <div className="grid grid-cols-3 gap-2.5 pt-2 sm:gap-3 md:max-w-xl md:pt-4">
               {[
-                { icon: Award, label: "ISO 9001", subKey: "iso.9001.sub" },
-                { icon: ShieldCheck, label: "ISO 27001", subKey: "iso.27001.sub" },
-                { icon: FileCheck2, label: "ISO 17100", subKey: "iso.17100.sub" },
-              ].map((b) => {
-                const Icon = b.icon;
-                return (
-                  <span key={b.label} className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-left backdrop-blur">
-                    <Icon className="size-5 shrink-0 text-highlight" />
-                    <span className="flex flex-col leading-tight">
-                      <span className="text-xs font-bold tracking-wide text-navy-foreground">{b.label}</span>
-                      <span className="text-[10px] font-medium text-navy-foreground/70">{t(b.subKey)}</span>
-                    </span>
+                {
+                  label: t("iso.9001.t"),
+                  sub: t("iso.9001.sub"),
+                  svg: (
+                    <svg viewBox="0 0 48 48" className="size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="24" cy="20" r="9" />
+                      <path d="M17 27 L13 42 L24 36 L35 42 L31 27" />
+                      <path d="M20 20 L23 23 L29 17" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: t("iso.27001.t"),
+                  sub: t("iso.27001.sub"),
+                  svg: (
+                    <svg viewBox="0 0 48 48" className="size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M24 4 L40 10 V24 C40 34 32 41 24 44 C16 41 8 34 8 24 V10 Z" />
+                      <rect x="18" y="22" width="12" height="10" rx="1.5" />
+                      <path d="M21 22 V18 a3 3 0 0 1 6 0 V22" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: t("iso.17100.t"),
+                  sub: t("iso.17100.sub"),
+                  svg: (
+                    <svg viewBox="0 0 48 48" className="size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 6 H28 L36 14 V42 H12 Z" />
+                      <path d="M28 6 V14 H36" />
+                      <path d="M17 26 L22 31 L31 22" />
+                    </svg>
+                  ),
+                },
+              ].map((b) => (
+                <div
+                  key={b.label}
+                  className="flex flex-col items-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.06] p-2.5 text-center shadow-lg shadow-black/20 backdrop-blur transition hover:border-highlight/50 hover:bg-white/[0.1] sm:flex-row sm:gap-3 sm:p-3 sm:text-left"
+                >
+                  <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-highlight/15 text-highlight">
+                    {b.svg}
                   </span>
-                );
-              })}
+                  <span className="flex min-w-0 flex-col leading-tight">
+                    <span className="text-[11px] font-bold tracking-wide text-navy-foreground sm:text-xs">{b.label}</span>
+                    <span className="hidden text-[10px] font-medium text-navy-foreground/70 sm:block">{b.sub}</span>
+                  </span>
+                </div>
+              ))}
             </div>
 
             {/* slide indicator dots */}
