@@ -30,7 +30,7 @@ export function FAQ() {
   };
 
   return (
-    <Section className="py-20">
+    <Section id="faq" className="py-20">
       <Container>
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
