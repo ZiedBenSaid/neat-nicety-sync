@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-
 import { AcceptanceGuarantee } from "@/components/landing/AcceptanceGuarantee";
 import { FAQ } from "@/components/landing/FAQ";
 import { Reviews } from "@/components/landing/Reviews";
@@ -10,6 +9,9 @@ import { FloatingContact } from "@/components/landing/FloatingContact";
 import { GermanProcess } from "@/components/landing/GermanProcess";
 import { GermanDocuments } from "@/components/landing/GermanDocuments";
 import { Languages } from "@/components/landing/Languages";
+import { CantFind } from "@/components/landing/CantFind";
+import { Services } from "@/components/landing/Services";
+import { WhyChoose } from "@/components/landing/WhyChoose";
 import { StickyMobileCTA } from "@/components/landing/StickyMobileCTA";
 
 export const Route = createFileRoute("/")({
@@ -34,21 +36,23 @@ function Index() {
         <div id="home">
           <Hero />
         </div>
-        
+        <AcceptanceGuarantee />
         <GermanProcess />
         <div id="documents">
           <GermanDocuments />
         </div>
+        <div id="contact">
+          <CantFind />
+        </div>
+        <Services />
+        <WhyChoose />
         <Languages />
-        <AcceptanceGuarantee />
         <div id="reviews">
           <Reviews />
         </div>
         <FAQ />
       </main>
-      <div id="contact">
-        <Footer />
-      </div>
+      <Footer />
       <FloatingContact />
       <StickyMobileCTA />
     </div>
