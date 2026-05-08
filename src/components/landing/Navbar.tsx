@@ -25,9 +25,11 @@ export function Navbar() {
 
   const navLinks = [
     { label: t("nav.home"), target: "home" },
-    { label: t("nav.services"), target: "documents" },
-    { label: t("nav.reviews"), target: "reviews" },
-    { label: t("nav.contact"), target: "contact" },
+    { label: t("nav.documents"), target: "documents" },
+    { label: t("nav.services"), target: "services" },
+    { label: t("nav.why"), target: "why" },
+    { label: t("nav.faq"), target: "faq" },
+    { label: t("nav.contact"), target: "cantfind" },
   ];
 
   useEffect(() => {
