@@ -1,36 +1,27 @@
 import { Upload, CreditCard, Mail, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Container, Section } from "./Section";
-
-const steps = [
-  {
-    icon: Upload,
-    title: "Dokument hochladen",
-    body: "Scan oder Foto Ihres Dokuments hochladen — 100% DSGVO-konforme Datenübertragung.",
-  },
-  {
-    icon: CreditCard,
-    title: "Festpreis erhalten & bezahlen",
-    body: "Sie bekommen sofort einen verbindlichen Festpreis. Sicher zahlen per SEPA, Kreditkarte oder PayPal.",
-  },
-  {
-    icon: Mail,
-    title: "Beglaubigte Übersetzung per Post & PDF erhalten",
-    body: "Digitales PDF in 24 Stunden, Original mit Stempel & Unterschrift per Einschreiben.",
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 export function GermanProcess() {
+  const { t } = useI18n();
+  const steps = [
+    { icon: Upload, title: t("process.s1.t"), body: t("process.s1.d") },
+    { icon: CreditCard, title: t("process.s2.t"), body: t("process.s2.d") },
+    { icon: Mail, title: t("process.s3.t"), body: t("process.s3.d") },
+  ];
+
   return (
     <Section id="ablauf" className="py-16 md:py-24">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">So funktioniert's</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            {t("process.kicker")}
+          </span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-            In 3 Schritten zur beglaubigten Übersetzung
+            {t("process.title.a")} <span className="text-highlight">{t("process.title.b")}</span> {t("process.title.c")}
           </h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Schnell, transparent und ohne Behördengang — alles bequem online.
-          </p>
+          <p className="mt-3 text-sm text-muted-foreground">{t("process.subtitle")}</p>
         </div>
 
         <ol className="relative mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
@@ -53,6 +44,15 @@ export function GermanProcess() {
             );
           })}
         </ol>
+
+        <div className="mt-10 text-center">
+          <Link
+            to="/order"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition hover:scale-[1.03] hover:bg-primary/90"
+          >
+            {t("process.cta")} <ArrowRight className="size-5" />
+          </Link>
+        </div>
       </Container>
     </Section>
   );
