@@ -84,7 +84,7 @@ function QuotePage() {
           <Container className="py-12 md:py-16">
             <div className="flex flex-col items-start gap-3">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-navy-foreground/90 backdrop-blur">
-                <ShieldCheck className="size-3.5 text-highlight" /> ISO 17100 · 100% acceptance
+                <ShieldCheck className="size-3.5 text-highlight" /> ISO 17100 · 100% Akzeptanzgarantie
               </span>
               <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">
                 {t("quote.title")}
@@ -190,7 +190,15 @@ function QuotePage() {
                 </div>
 
                 <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
-                  <PriceSummary totals={totals} pages={pages} urgency={urgency} notary={notary} hardcopy={hardcopy} />
+                  {step > 1 && files.length > 0 ? (
+                    <PriceSummary totals={totals} pages={pages} urgency={urgency} notary={notary} hardcopy={hardcopy} />
+                  ) : (
+                    <div className="rounded-2xl border border-dashed border-border bg-surface p-6 text-center">
+                      <p className="text-sm text-muted-foreground">
+                        Ihr Angebot wird nach dem Hochladen des Dokuments berechnet.
+                      </p>
+                    </div>
+                  )}
                   <TrustPanel />
                 </aside>
               </div>
@@ -206,10 +214,10 @@ function QuotePage() {
 
 function Stepper({ step }: { step: number }) {
   const items = [
-    { n: 1, icon: Upload, label: "Upload" },
-    { n: 2, icon: Globe2, label: "Languages" },
-    { n: 3, icon: Clock, label: "Turnaround" },
-    { n: 4, icon: Mail, label: "Submit" },
+    { n: 1, icon: Upload, label: "Hochladen" },
+    { n: 2, icon: Globe2, label: "Sprachen" },
+    { n: 3, icon: Clock, label: "Lieferzeit" },
+    { n: 4, icon: Mail, label: "Absenden" },
   ];
   return (
     <ol className="flex items-center gap-2">
@@ -342,7 +350,7 @@ function Step2({
         <LangSelect label={t("quote.s2.to")} value={to} onChange={setTo} />
       </div>
       {from === to && (
-        <p className="mt-3 text-xs text-destructive">Source and target language must differ.</p>
+        <p className="mt-3 text-xs text-destructive">Ausgangs- und Zielsprache müssen sich unterscheiden.</p>
       )}
     </div>
   );
@@ -448,12 +456,12 @@ function Step4({
       <h2 className="text-xl font-bold tracking-tight">{t("quote.s4.title")}</h2>
 
       <dl className="mt-6 grid gap-2 rounded-xl border border-border bg-surface p-4 text-sm">
-        <Row label="Files" value={`${summary.files}`} />
-        <Row label="Pages" value={`${summary.pages}`} />
-        <Row label="Language pair" value={`${summary.from} → ${summary.to}`} />
-        <Row label="Turnaround" value={summary.urgency} />
-        {summary.notary && <Row label="Notarization" value="Yes" />}
-        {summary.hardcopy && <Row label="Hard copy" value="Yes" />}
+        <Row label="Dateien" value={`${summary.files}`} />
+        <Row label="Seiten" value={`${summary.pages}`} />
+        <Row label="Sprachpaar" value={`${summary.from} → ${summary.to}`} />
+        <Row label="Lieferzeit" value={summary.urgency} />
+        {summary.notary && <Row label="Notarielle Beglaubigung" value="Ja" />}
+        {summary.hardcopy && <Row label="Originalkopie" value="Ja" />}
         <div className="mt-2 flex items-center justify-between border-t border-border pt-3 text-base font-bold">
           <span>{t("quote.s4.summary")}</span>
           <span className="text-primary">€{summary.totals.total.toFixed(2)}</span>
@@ -534,7 +542,7 @@ function PriceSummary({
         )}
       </ul>
       <p className="mt-4 text-[11px] text-muted-foreground">
-        Final price confirmed within 30 minutes by a project manager.
+        Der endgültige Preis wird innerhalb von 30 Minuten von einem Projektmanager bestätigt.
       </p>
     </div>
   );
@@ -542,9 +550,9 @@ function PriceSummary({
 
 function TrustPanel() {
   const items = [
-    { icon: ShieldCheck, t: "100% acceptance guarantee" },
-    { icon: Lock, t: "GDPR · NDA · encrypted" },
-    { icon: Clock, t: "Avg. response under 1 hour, 24/7" },
+    { icon: ShieldCheck, t: "100% Akzeptanzgarantie" },
+    { icon: Lock, t: "DSGVO · NDA · verschlüsselt" },
+    { icon: Clock, t: "Ø Antwortzeit unter 1 Stunde, 24/7" },
   ];
   return (
     <div className="rounded-2xl border border-border bg-surface p-6">
@@ -581,9 +589,9 @@ function SuccessState({ onHome, title, sub, cta }: { onHome: () => void; title: 
         {cta} <ArrowRight className="size-4" />
       </button>
       <p className="mt-6 text-xs text-muted-foreground">
-        Need it faster? Email{" "}
+        Brauchen Sie es schneller? E-Mail an{" "}
         <Link to="/" className="font-semibold text-primary hover:underline">hello@certilingua.com</Link>
-        {" "}· avg. reply under 1 hour.
+        {" "}· Ø Antwort unter 1 Stunde.
       </p>
     </div>
   );
