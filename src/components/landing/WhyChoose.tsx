@@ -1,48 +1,73 @@
 import { Link } from "@tanstack/react-router";
-import { ShieldCheck, Clock, Award, Lock, Euro, Headset, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container, Section } from "./Section";
 import { useI18n } from "@/lib/i18n";
 
 export function WhyChoose() {
   const { t } = useI18n();
-  const cards = [
-    { icon: ShieldCheck, t: t("why.c1.t"), d: t("why.c1.d") },
-    { icon: Clock, t: t("why.c2.t"), d: t("why.c2.d") },
-    { icon: Award, t: t("why.c3.t"), d: t("why.c3.d") },
-    { icon: Lock, t: t("why.c4.t"), d: t("why.c4.d") },
-    { icon: Euro, t: t("why.c5.t"), d: t("why.c5.d") },
-    { icon: Headset, t: t("why.c6.t"), d: t("why.c6.d") },
+
+  const points = [
+    { title: t("why.p1.t"), desc: t("why.p1.d") },
+    { title: t("why.p2.t"), desc: t("why.p2.d") },
+    { title: t("why.p3.t"), desc: t("why.p3.d") },
+    { title: t("why.p4.t"), desc: t("why.p4.d") },
   ];
+
   return (
     <Section id="why" className="bg-surface py-16 md:py-24">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">{t("why.title")}</h2>
-          <p className="mt-3 text-sm text-muted-foreground md:text-base">{t("why.subtitle")}</p>
-        </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((c) => {
-            const Icon = c.icon;
-            return (
-              <div
-                key={c.t}
-                className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
-              >
-                <div className="grid size-12 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <Icon className="size-6" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold tracking-tight">{c.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+        {/* Two-column layout */}
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
+          {/* Left — heading + pull quote */}
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+              {t("why.kicker")}
+            </span>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
+              {t("why.title")}
+            </h2>
+            <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">
+              {t("why.tagline")}
+            </p>
+
+            <blockquote className="mt-8 border-l-2 border-primary pl-5">
+              <p className="text-base italic leading-relaxed text-foreground md:text-lg">
+                &ldquo;{t("why.pullquote")}&rdquo;
+              </p>
+            </blockquote>
+          </div>
+
+          {/* Right — 4 differentiators */}
+          <div className="flex flex-col divide-y divide-border">
+            {points.map((p) => (
+              <div key={p.title} className="py-5 first:pt-0 last:pb-0">
+                <p className="text-sm font-bold tracking-tight text-foreground">{p.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
-        <div className="mt-10 text-center">
+
+        {/* Dark CTA bar */}
+        <div
+          className="mt-14 flex flex-col items-start gap-4 rounded-2xl px-8 py-7 sm:flex-row sm:items-center sm:justify-between"
+          style={{ background: "var(--navy)" }}
+        >
+          <p
+            className="text-base font-semibold"
+            style={{ color: "var(--navy-foreground)" }}
+          >
+            {t("why.ctabar")}
+          </p>
           <Link
             to="/order"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition hover:scale-[1.03] hover:bg-primary/90"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition hover:opacity-90"
+            style={{
+              background: "var(--highlight)",
+              color: "var(--navy)",
+            }}
           >
-            {t("why.cta")} <ArrowRight className="size-5" />
+            {t("why.cta")} <ArrowRight className="size-4" />
           </Link>
         </div>
       </Container>
