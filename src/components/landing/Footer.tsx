@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Mail, MapPin, Phone, Facebook, Twitter, Instagram, Apple, ShieldCheck, BadgeCheck, Lock, Award, Building2, GraduationCap, Gavel, Landmark, Globe2, FileCheck2 } from "lucide-react";
+import { Mail, MapPin, Phone, Apple, ShieldCheck, BadgeCheck, Lock, Award, Building2, GraduationCap, Gavel, Landmark, Globe2, FileCheck2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Container } from "./Section";
 import { Logo } from "./Logo";
