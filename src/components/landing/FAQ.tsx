@@ -41,7 +41,7 @@ export function FAQ() {
               {t("faq.subtitle")}
             </p>
           </div>
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+          <Accordion type="multiple" defaultValue={["item-0", "item-1", "item-2"]} className="w-full">
             {faqs.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-b border-border">
                 <AccordionTrigger className="py-4 text-left text-sm font-semibold tracking-tight hover:no-underline">

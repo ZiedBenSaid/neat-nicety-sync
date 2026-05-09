@@ -361,10 +361,11 @@ const dictionaries: Record<Lang, Dict> = {
     "process.s3.d": "Sie erhalten die Übersetzung zur Prüfung und geben sie zur finalen Lieferung frei.",
     "process.s4.t": "Erhalten & herunterladen",
     "process.s4.d": "Hochwertige beglaubigte Übersetzung per E-Mail, in der Regel innerhalb von 48 Stunden.",
-    "process.cta": "Online-Übersetzung bestellen",
+    "process.cta": "Jetzt übersetzen lassen",
     "process.stat.langs": "Sprachen",
     "process.stat.acc": "Akzeptanzrate",
-    "process.stat.turn": "Ø Bearbeitungszeit",
+    "process.stat.turn": "Ø Lieferzeit",
+    "process.stat.turn.value": "48 Std.",
     "cantfind.title2": "Ihr Dokument nicht gefunden?",
     "cantfind.sub2": "Ihre Sprache oder Dokumentenart nicht aufgeführt?\nWir bearbeiten alle offiziellen Dokumente in über 120 Sprachen.",
 
@@ -391,7 +392,7 @@ const dictionaries: Record<Lang, Dict> = {
 
     "why.title": "Warum CertiLingua wählen?",
     "why.subtitle": "Wir sind nicht nur ein weiterer Übersetzungsdienst. Wir sind Ihr verlässlicher Partner für offizielle Dokumente.",
-    "why.cta": "Jetzt Ihre Übersetzung anfordern",
+    "why.cta": "Jetzt übersetzen lassen",
     "why.c1.t": "100% Annahmegarantie",
     "why.c1.d": "Unsere Übersetzungen werden von allen deutschen Behörden akzeptiert — Ausländerbehörde, BAMF, Standesamt, Gerichte und Universitäten. Oder wir wiederholen es kostenlos.",
     "why.c2.t": "Lieferung in 24–48 Stunden",
@@ -411,8 +412,8 @@ const dictionaries: Record<Lang, Dict> = {
     "hero.title.b": "beglaubigte",
     "hero.title.c": "Übersetzungen",
     "hero.subtitle": "Von vereidigten Übersetzern angefertigt und anerkannt von Standesämtern, Universitäten, Gerichten und Behörden in ganz Deutschland — sowie von USCIS und Botschaften weltweit. ISO 17100, DSGVO-konform, Lieferung in 24 Stunden.",
-    "hero.cta": "Beglaubigte Übersetzung starten",
-    "hero.cta.secondary": "Sofortangebot erhalten",
+    "hero.cta": "Jetzt übersetzen lassen",
+    "hero.cta.secondary": "Sofortangebot anfordern",
     "hero.trust.support": "Support rund um die Uhr",
     "hero.trust.physical": "Originaldokument per Post inklusive",
     "hero.trust.confidential": "DSGVO · NDA-geschützt",
@@ -451,7 +452,7 @@ const dictionaries: Record<Lang, Dict> = {
     "cta.title.a": "In Minuten bestellt.",
     "cta.title.b": "Pünktlich geliefert.",
     "cta.subtitle": "Schnelle, präzise Übersetzungen — ohne Abo, ohne versteckte Kosten.",
-    "cta.button": "Beglaubigte Übersetzung starten",
+    "cta.button": "Jetzt übersetzen lassen",
 
     // Reviews
     "reviews.badge": "Verifizierte Kundenbewertungen",
