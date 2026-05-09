@@ -51,18 +51,7 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-xs leading-relaxed text-navy-foreground/70">
               {t("footer.why.body")}
             </p>
-            <div className="mt-5 flex items-center gap-2">
-              {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="social"
-                  className="grid size-9 place-items-center rounded-md border border-navy-border text-navy-foreground/80 hover:border-primary hover:text-primary"
-                >
-                  <Icon className="size-4" />
-                </a>
-              ))}
-            </div>
+            {/* Social icons hidden until real profiles are connected */}
             <div className="mt-6 flex flex-wrap items-center gap-1.5">
               <PayChip>
                 <span className="text-[10px] font-extrabold italic leading-none">
@@ -118,8 +107,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-navy-foreground/70">
               <li><Link to="/impressum" className="hover:text-primary">Impressum</Link></li>
               <li><Link to="/privacy" className="hover:text-primary">Datenschutz (DSGVO)</Link></li>
-              <li><Link to="/agb" className="hover:text-primary">AGB</Link></li>
-              <li><Link to="/terms" className="hover:text-primary">{t("footer.legal.terms")}</Link></li>
+              <li><Link to="/terms" className="hover:text-primary">AGB</Link></li>
             </ul>
           </div>
 
@@ -148,7 +136,7 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-navy-border pt-6 text-center text-xs text-navy-foreground/55 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} CertiLingua. {t("footer.rights")}</p>
           <p className="inline-flex items-center gap-2">
-            <ShieldCheck className="size-3.5 text-highlight" /> ISO 17100 · GDPR · NDA-secured
+            <ShieldCheck className="size-3.5 text-highlight" /> ISO 17100 · DSGVO · NDA-gesichert
           </p>
         </div>
       </Container>

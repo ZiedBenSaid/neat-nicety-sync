@@ -17,12 +17,12 @@ export type Review = {
 };
 
 export const reviews: Review[] = [
-  { name: "Amelia R.", country: "United Kingdom", flag: "gb", date: "3 days ago", title: "Accepted by USCIS first try", body: "Translated my birth certificate for a US visa. Document was accepted by USCIS without a single question. Turnaround was under 24 hours.", rating: 5, verified: true },
-  { name: "Lukas M.", country: "Germany", flag: "de", date: "1 week ago", title: "Beglaubigte Übersetzung — perfekt", body: "Heiratsurkunde für das Standesamt übersetzt. Stempel, Unterschrift, alles korrekt. Sehr professionell und schneller als versprochen.", rating: 5, verified: true },
-  { name: "Sofia C.", country: "Italy", flag: "it", date: "2 weeks ago", title: "University enrollment saved", body: "Needed my diploma translated for Sorbonne enrollment with two days notice. They delivered overnight, certified, and the apostille was already attached.", rating: 5, verified: true },
-  { name: "Hiroshi T.", country: "Japan", flag: "jp", date: "3 weeks ago", title: "Court-ready translation", body: "Used CertiLingua for a sworn translation submitted to a German court. The translator's stamp was recognised immediately. Worth every euro.", rating: 5, verified: true },
-  { name: "Maria G.", country: "Spain", flag: "es", date: "1 month ago", title: "Clear pricing, no surprises", body: "Quoted upfront, paid once, received the physical copy by post within four days. The digital version arrived in hours. Recommended.", rating: 5, verified: true },
-  { name: "Jean-Paul D.", country: "France", flag: "fr", date: "1 month ago", title: "Professional and discreet", body: "Translated sensitive medical documents for an insurance claim. Confidential, accurate, and the formatting matched the original perfectly.", rating: 4, verified: true },
+  { name: "Lukas M.", country: "Deutschland", flag: "de", date: "vor 1 Woche", title: "Beglaubigte Übersetzung — perfekt", body: "Heiratsurkunde für das Standesamt übersetzt. Stempel, Unterschrift, alles korrekt. Sehr professionell und schneller als versprochen.", rating: 5, verified: true },
+  { name: "Anna K.", country: "Deutschland", flag: "de", date: "vor 4 Tagen", title: "Schnell und absolut zuverlässig", body: "Geburtsurkunde innerhalb von 24 Stunden beglaubigt übersetzt. Wurde ohne Nachfrage von der Ausländerbehörde anerkannt. Ich kann CertiLingua wärmstens empfehlen.", rating: 5, verified: true },
+  { name: "Stefan H.", country: "Österreich", flag: "at", date: "vor 2 Wochen", title: "Top Service für Visa-Antrag", body: "Diplom und Notenspiegel für die Bewerbung in den USA übersetzt. Alles ISO-konform, vereidigter Übersetzer, faire Preise. Zahlung erst nach Freigabe — sehr seriös.", rating: 5, verified: true },
+  { name: "Julia B.", country: "Schweiz", flag: "ch", date: "vor 3 Wochen", title: "Kompetente und freundliche Beratung", body: "Hatte viele Fragen zur Beglaubigung für das BAMF. Das Team war sofort per WhatsApp erreichbar und hat alles geduldig erklärt. Lieferung pünktlich, Qualität einwandfrei.", rating: 5, verified: true },
+  { name: "Amelia R.", country: "United Kingdom", flag: "gb", date: "vor 3 Tagen", title: "Accepted by USCIS first try", body: "Translated my birth certificate for a US visa. Document was accepted by USCIS without a single question. Turnaround was under 24 hours.", rating: 5, verified: true },
+  { name: "Sofia C.", country: "Italy", flag: "it", date: "vor 2 Wochen", title: "University enrollment saved", body: "Needed my diploma translated for Sorbonne enrollment with two days notice. They delivered overnight, certified, and the apostille was already attached.", rating: 5, verified: true },
 ];
 
 export const summary = {

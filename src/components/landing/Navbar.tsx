@@ -198,8 +198,8 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium transition hover:bg-muted"
               >
-                <span>Cart</span>
-                <span className="text-xs text-muted-foreground">{cart.count} items</span>
+                <span>Warenkorb</span>
+                <span className="text-xs text-muted-foreground">{cart.count}</span>
               </Link>
             </Container>
           </motion.div>

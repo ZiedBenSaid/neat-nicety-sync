@@ -118,7 +118,7 @@ export function GermanProcess() {
                   {[
                     { v: "60+", l: t("process.stat.langs") },
                     { v: "100%", l: t("process.stat.acc") },
-                    { v: "24/7", l: t("process.stat.turn") },
+                    { v: "48 Std.", l: t("process.stat.turn") },
                   ].map((s) => (
                     <div key={s.l} className="text-center">
                       <div className="text-2xl font-bold text-white md:text-3xl">{s.v}</div>
