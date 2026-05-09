@@ -100,18 +100,15 @@ const dictionaries: Record<Lang, Dict> = {
     // TrustBar
     "trustbar.title": "Trusted by 12,000+ clients & accepted by official authorities worldwide",
 
-    // Acceptance guarantee
-    "guarantee.kicker": "Our promise",
-    "guarantee.title": "100% Acceptance Guarantee",
-    "guarantee.subtitle": "If your certified translation is rejected by USCIS, an embassy, court, or university for any reason related to its translation or certification, we revise it for free — or refund you in full. No questions asked.",
-    "guarantee.point1.t": "Accepted or refunded",
-    "guarantee.point1.d": "Full refund if your document is not accepted by the issuing authority.",
-    "guarantee.point2.t": "ISO-certified linguists",
-    "guarantee.point2.d": "Sworn, vetted translators specialised in legal, medical & academic fields.",
-    "guarantee.point3.t": "Confidential by design",
-    "guarantee.point3.d": "GDPR-compliant handling, encrypted storage, NDA on every project.",
-    "guarantee.point4.t": "On-time, every time",
-    "guarantee.point4.d": "Standard 24–48h delivery. Rush turnaround available in hours.",
+    // AcceptanceGuarantee
+"guarantee.cta": "Start your Translation",
+"guarantee.footnote": "Or full refund. No questions asked.",
+"guarantee.point1.t": "Accepted or refunded",
+"guarantee.point1.d": "Full refund if rejected by any authority — guaranteed, no conditions.",
+"guarantee.point2.t": "ISO-certified linguists",
+"guarantee.point2.d": "Sworn, audited translators with legal, medical & academic specialisation.",
+"guarantee.point3.t": "Military-grade security",
+"guarantee.point3.d": "256-bit encryption. ISO 27001 certified. Files permanently deleted after 30 days.",
 
     // Use Cases
     "uc.kicker": "Use cases",
@@ -249,7 +246,27 @@ const dictionaries: Record<Lang, Dict> = {
     "footer.legal.privacy": "Privacy Policy",
     "footer.legal.cookies": "Cookie Policy",
     "footer.legal.gdpr": "GDPR Compliance",
-
+// Services — prices
+"services.s1.price": "from €16.99",
+"services.s2.price": "from €24.00",
+"services.s3.price": "from €34.50",
+"services.s4.price": "from €9.00",
+"services.s5.price": "from €34.50",
+"services.s6.price": "On request",
+ 
+// WhyChoose
+"why.kicker": "Why CertiLingua",
+"why.tagline": "Not the cheapest option. The best result.",
+"why.pullquote": "Our translators are not just selected. They are tested, certified, and only deployed after rigorous quality control.",
+"why.p1.t": "No rejection.",
+"why.p1.d": "100% acceptance guarantee — or a full refund, no fine print.",
+"why.p2.t": "No surprises.",
+"why.p2.d": "Transparent pricing. You see the final price before you pay.",
+"why.p3.t": "No waiting.",
+"why.p3.d": "Standard 24–48h. Express from 4 hours.",
+"why.p4.t": "No compromises.",
+"why.p4.d": "ISO 17100, ISO 27001, GDPR. Triple certified.",
+"why.ctabar": "Ready to have your document translated?",
     // Pricing
     "pricing.kicker": "Transparent pricing",
     "pricing.title": "One simple price. No hidden fees.",
@@ -422,18 +439,14 @@ const dictionaries: Record<Lang, Dict> = {
     "trustbar.title": "12.000+ Kunden vertrauen uns — anerkannt von Behörden weltweit",
 
     // Acceptance guarantee
-    "guarantee.kicker": "Unser Versprechen",
-    "guarantee.title": "100% Akzeptanzgarantie",
-    "guarantee.subtitle": "Sollte Ihre beglaubigte Übersetzung aus Gründen der Übersetzung oder Beglaubigung von USCIS, einer Botschaft, einem Gericht oder einer Universität abgelehnt werden, überarbeiten wir sie kostenlos — oder erstatten den vollen Betrag. Ohne Wenn und Aber.",
-    "guarantee.point1.t": "Anerkannt oder Geld zurück",
-    "guarantee.point1.d": "Volle Rückerstattung, falls Ihr Dokument von der Behörde nicht anerkannt wird.",
-    "guarantee.point2.t": "ISO-zertifizierte Linguisten",
-    "guarantee.point2.d": "Vereidigte, geprüfte Übersetzer mit juristischer, medizinischer & akademischer Spezialisierung.",
-    "guarantee.point3.t": "Vertraulich by design",
-    "guarantee.point3.d": "DSGVO-konforme Verarbeitung, verschlüsselte Speicherung, NDA bei jedem Projekt.",
-    "guarantee.point4.t": "Pünktlich, immer",
-    "guarantee.point4.d": "Standardlieferung 24–48 Std. Express-Lieferung innerhalb weniger Stunden möglich.",
-
+   "guarantee.cta": "Jetzt übersetzen lassen",
+"guarantee.footnote": "Oder volle Rückerstattung. Ohne Wenn und Aber.",
+"guarantee.point1.t": "Anerkannt oder Geld zurück",
+"guarantee.point1.d": "Volle Rückerstattung bei Ablehnung durch jede Behörde — garantiert, keine Bedingungen.",
+"guarantee.point2.t": "ISO-zertifizierte Linguisten",
+"guarantee.point2.d": "Vereidigte, geprüfte Übersetzer mit juristischer, medizinischer & akademischer Spezialisierung.",
+"guarantee.point3.t": "Militärgrade Verschlüsselung",
+"guarantee.point3.d": "256-Bit-Verschlüsselung. ISO 27001 zertifiziert. Dateien nach 30 Tagen permanent gelöscht.",
     // Use Cases
     "uc.kicker": "Anwendungsfälle",
     "uc.title": "Für die Dokumente, die über Ihre Zukunft entscheiden",
@@ -492,7 +505,27 @@ const dictionaries: Record<Lang, Dict> = {
     "faq.a5": "Standardlieferung: 24–48 Stunden. Express-Service: bereits ab 4–8 Stunden — abhängig von Sprache und Dokumenttyp.",
     "faq.q6": "Was kostet eine beglaubigte Übersetzung?",
     "faq.a6": "Ab €16,99 pro Seite (≤250 Wörter). Der Endpreis hängt von Umfang, Sprachpaar, Dringlichkeit und Zusatzleistungen wie notarieller Beglaubigung oder Postversand ab.",
-
+// Services — prices
+"services.s1.price": "ab €16,99",
+"services.s2.price": "ab €24,00",
+"services.s3.price": "ab €34,50",
+"services.s4.price": "ab €9,00",
+"services.s5.price": "ab €34,50",
+"services.s6.price": "Auf Anfrage",
+ 
+// WhyChoose
+"why.kicker": "Warum CertiLingua",
+"why.tagline": "Nicht das billigste Angebot. Das beste Ergebnis.",
+"why.pullquote": "Unsere Übersetzer werden nicht ausgewählt. Sie werden geprüft, zertifiziert und erst nach strenger Qualitätskontrolle eingesetzt.",
+"why.p1.t": "Keine Ablehnung.",
+"why.p1.d": "100% Akzeptanzgarantie — oder volle Rückerstattung, kein Kleingedrucktes.",
+"why.p2.t": "Keine Überraschungen.",
+"why.p2.d": "Transparente Preise. Sie sehen den Endpreis vor der Zahlung.",
+"why.p3.t": "Keine Wartezeit.",
+"why.p3.d": "Standard 24–48 Std., Express ab 4 Stunden.",
+"why.p4.t": "Keine Kompromisse.",
+"why.p4.d": "ISO 17100, ISO 27001, DSGVO. Dreifach zertifiziert.",
+"why.ctabar": "Bereit, Ihr Dokument übersetzen zu lassen?",
     // Quote
     "quote.title": "Sofortangebot anfordern",
     "quote.subtitle": "Vier schnelle Schritte. Kein Konto nötig. Sie sehen den Preis, bevor Sie zahlen.",
