@@ -10,7 +10,7 @@ export function GermanDocuments() {
   const visible = products.slice(0, 4);
 
   return (
-    <Section id="dokumente" className="bg-surface py-16 md:py-20">
+    <Section id="dokumente" className="bg-surface py-12 md:py-20">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">

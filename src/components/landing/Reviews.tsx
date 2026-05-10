@@ -146,7 +146,7 @@ export function Reviews() {
   };
 
   return (
-    <Section id="reviews" className="bg-surface py-16 md:py-24">
+    <Section id="reviews" className="bg-surface py-12 md:py-20">
       <Container>
         {/* Header / summary */}
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-end">

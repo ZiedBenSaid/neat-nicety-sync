@@ -320,6 +320,23 @@ function ProductPage() {
           </section>
         </Container>
       </main>
+
+      {/* Sticky mobile Add to Cart bar */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 p-3 shadow-2xl backdrop-blur md:hidden">
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col">
+            <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Total</span>
+            <span className="text-lg font-bold text-primary leading-none">€{total.toFixed(2)}</span>
+          </div>
+          <button
+            onClick={() => handleAdd(false)}
+            className="ml-auto inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/30 transition active:scale-[0.98]"
+          >
+            <ShoppingCart className="size-4" /> Add to Cart
+          </button>
+        </div>
+      </div>
+
       <Footer />
       <FloatingContact />
     </div>

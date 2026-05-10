@@ -41,7 +41,7 @@ function Pill({ name, code }: { name: string; code: string }) {
 
 export function Languages() {
   return (
-    <Section className="relative overflow-hidden bg-surface py-20 md:py-24">
+    <Section className="relative overflow-hidden bg-surface py-12 md:py-20">
       <GlobeBackdrop opacity={0.45} />
       <Container className="relative z-10">
         <div className="mx-auto max-w-2xl text-center">

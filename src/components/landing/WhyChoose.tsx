@@ -14,7 +14,7 @@ export function WhyChoose() {
   ];
 
   return (
-    <Section id="why" className="relative overflow-hidden bg-surface py-16 md:py-24">
+    <Section id="why" className="relative overflow-hidden bg-surface py-12 md:py-20">
       {/* Decorative blob */}
       <div
         aria-hidden
@@ -44,13 +44,13 @@ export function WhyChoose() {
           </div>
 
           {/* Right — interactive cards */}
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {points.map((p) => {
               const Icon = p.icon;
               return (
                 <div
                   key={p.title}
-                  className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  className="group rounded-2xl border border-border bg-card p-3.5 sm:p-5 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
                 >
                   <span className="inline-grid size-11 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
                     <Icon className="size-5" />
