@@ -62,7 +62,7 @@ export function GermanProcess() {
   ];
 
   return (
-    <Section id="ablauf" className="py-16 md:py-24">
+    <Section id="ablauf" className="py-12 md:py-20">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="text-center lg:text-left">
@@ -76,22 +76,23 @@ export function GermanProcess() {
               {t("process.subtitle")}
             </p>
 
-            <ol className="mx-auto mt-10 grid max-w-md gap-6 lg:max-w-none">
+            <ol className="mx-auto mt-8 grid max-w-md grid-cols-2 gap-4 sm:gap-6 lg:max-w-none lg:grid-cols-1">
               {steps.map((s, i) => (
-                <li key={s.title} className="flex items-start gap-4 text-left">
-                  <div className="relative flex flex-col items-center">
-                    <div className="grid size-10 shrink-0 place-items-center rounded-full border-2 border-primary/30 bg-primary/5 text-sm font-bold text-primary">
+                <li key={s.title} className="flex flex-col items-start gap-2 rounded-xl border border-border bg-card p-3 text-left lg:flex-row lg:items-start lg:gap-4 lg:border-0 lg:bg-transparent lg:p-0">
+                  <div className="flex items-center gap-2 lg:flex-col lg:items-center">
+                    <div className="grid size-8 shrink-0 place-items-center rounded-full border-2 border-primary/30 bg-primary/5 text-xs font-bold text-primary lg:size-10 lg:text-sm">
                       {i + 1}
                     </div>
                     {i < steps.length - 1 ? (
-                      <div className="mt-1 h-12 w-px bg-primary/20" />
+                      <div className="hidden lg:block lg:mt-1 lg:h-12 lg:w-px bg-primary/20" />
                     ) : null}
+                    <div className="lg:hidden"><s.Icon /></div>
                   </div>
-                  <div className="flex flex-1 items-start gap-3 pb-2">
-                    <s.Icon />
+                  <div className="flex flex-1 items-start gap-3 pb-1 lg:pb-2">
+                    <div className="hidden lg:block"><s.Icon /></div>
                     <div>
-                      <h3 className="text-base font-semibold text-foreground">{s.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                      <h3 className="text-sm font-semibold text-foreground lg:text-base">{s.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground lg:text-sm">{s.body}</p>
                     </div>
                   </div>
                 </li>

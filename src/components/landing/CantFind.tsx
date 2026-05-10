@@ -22,7 +22,7 @@ export function CantFind() {
   ];
 
   return (
-    <Section id="cantfind" className="relative overflow-hidden bg-navy py-20 md:py-28">
+    <Section id="cantfind" className="relative overflow-hidden bg-navy py-14 md:py-20">
       {/* Soft gradient glow */}
       <div
         aria-hidden

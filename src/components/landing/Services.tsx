@@ -15,7 +15,7 @@ export function Services() {
   const { t } = useI18n();
 
   return (
-    <Section id="services" className="bg-background py-16 md:py-24">
+    <Section id="services" className="bg-background py-12 md:py-20">
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
@@ -31,12 +31,12 @@ export function Services() {
         </div>
 
         {/* Interactive cards */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {SERVICES.map(({ key, icon: Icon }) => (
             <Link
               key={key}
               to="/order"
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
             >
               {/* Hover gradient */}
               <span

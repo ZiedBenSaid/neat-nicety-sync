@@ -28,7 +28,7 @@ export function AcceptanceGuarantee() {
   ];
 
   return (
-    <Section className="relative overflow-hidden bg-surface py-20 md:py-28">
+    <Section className="relative overflow-hidden bg-surface py-12 md:py-20">
       {/* Decorative gradient blobs */}
       <div
         aria-hidden
@@ -58,13 +58,13 @@ export function AcceptanceGuarantee() {
           </div>
 
           {/* Stats grid */}
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
             {stats.map((s, i) => {
               const Icon = s.icon;
               return (
                 <div
                   key={s.value}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-7 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
                 >
                   {/* Number watermark */}
                   <span className="absolute -right-2 -top-4 select-none text-[6rem] font-black leading-none text-primary/5">
