@@ -1,23 +1,26 @@
 import { Container, Section } from "./Section";
 import { useI18n } from "@/lib/i18n";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, BadgeCheck, Lock } from "lucide-react";
 
 export function AcceptanceGuarantee() {
   const { t } = useI18n();
 
   const stats = [
     {
+      icon: ShieldCheck,
       value: "100%",
       label: t("guarantee.point1.t"),
       desc: t("guarantee.point1.d"),
     },
     {
+      icon: BadgeCheck,
       value: "ISO 17100",
       label: t("guarantee.point2.t"),
       desc: t("guarantee.point2.d"),
     },
     {
+      icon: Lock,
       value: "256-bit",
       label: t("guarantee.point3.t"),
       desc: t("guarantee.point3.d"),
@@ -25,76 +28,75 @@ export function AcceptanceGuarantee() {
   ];
 
   return (
-    <Section className="py-20 md:py-28" style={{ background: "var(--navy)" }}>
-      <Container>
-        {/* Amber accent bar */}
-        <div className="h-0.5 w-12 bg-highlight" />
+    <Section className="relative overflow-hidden bg-surface py-20 md:py-28">
+      {/* Decorative gradient blobs */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full opacity-40 blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -right-24 h-[28rem] w-[28rem] rounded-full opacity-30 blur-3xl"
+        style={{ background: "radial-gradient(circle, oklch(0.86 0.18 95) 0%, transparent 70%)" }}
+      />
 
-        <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-          {/* Left: heading + CTA */}
-          <div>
-            <span
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--highlight)" }}
-            >
+      <Container>
+        <div className="relative">
+          {/* Header */}
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+              <ShieldCheck className="size-3.5" />
               {t("guarantee.kicker")}
             </span>
-            <h2
-              className="mt-3 text-3xl font-bold tracking-tight md:text-4xl"
-              style={{ color: "var(--navy-foreground)" }}
-            >
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
               {t("guarantee.title")}
             </h2>
-            <p
-              className="mt-4 max-w-md text-sm leading-relaxed md:text-base"
-              style={{ color: "oklch(0.72 0.02 255)" }}
-            >
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
               {t("guarantee.subtitle")}
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                to="/order"
-                className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition hover:opacity-90"
-                style={{
-                  background: "var(--highlight)",
-                  color: "var(--navy)",
-                }}
-              >
-                {t("guarantee.cta")} <ArrowRight className="size-4" />
-              </Link>
-              <p className="text-xs" style={{ color: "oklch(0.55 0.02 255)" }}>
-                {t("guarantee.footnote")}
-              </p>
-            </div>
           </div>
 
-          {/* Right: 3 stat rows */}
-          <div className="flex flex-col divide-y" style={{ borderColor: "oklch(0.30 0.04 258)" }}>
-            {stats.map((s) => (
-              <div key={s.value} className="flex items-start gap-6 py-6 first:pt-0 last:pb-0">
-                <p
-                  className="w-24 shrink-0 text-3xl font-bold tracking-tight"
-                  style={{ color: "var(--highlight)" }}
+          {/* Stats grid */}
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {stats.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <div
+                  key={s.value}
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
                 >
-                  {s.value}
-                </p>
-                <div>
-                  <p
-                    className="text-sm font-semibold uppercase tracking-wider"
-                    style={{ color: "var(--navy-foreground)" }}
-                  >
-                    {s.label}
-                  </p>
-                  <p
-                    className="mt-1 text-sm leading-relaxed"
-                    style={{ color: "oklch(0.62 0.02 255)" }}
-                  >
-                    {s.desc}
-                  </p>
+                  {/* Number watermark */}
+                  <span className="absolute -right-2 -top-4 select-none text-[6rem] font-black leading-none text-primary/5">
+                    0{i + 1}
+                  </span>
+
+                  <div className="relative">
+                    <span className="inline-grid size-12 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                      <Icon className="size-6" />
+                    </span>
+                    <p className="mt-5 text-2xl font-bold tracking-tight text-primary md:text-3xl">
+                      {s.value}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-foreground">
+                      {s.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              to="/order"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition hover:scale-[1.03] hover:bg-primary/90"
+            >
+              {t("guarantee.cta")} <ArrowRight className="size-4" />
+            </Link>
+            <p className="text-xs text-muted-foreground">{t("guarantee.footnote")}</p>
           </div>
         </div>
       </Container>
