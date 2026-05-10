@@ -1,9 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileCheck2, Zap, Truck, Microscope, Building2 } from "lucide-react";
 import { Container, Section } from "./Section";
 import { useI18n } from "@/lib/i18n";
 
-const SERVICE_KEYS = ["s1", "s2", "s3", "s4", "s5", "s6"] as const;
+const SERVICES = [
+  { key: "s1", icon: FileCheck2 },
+  { key: "s3", icon: Zap },
+  { key: "s4", icon: Truck },
+  { key: "s5", icon: Microscope },
+  { key: "s6", icon: Building2 },
+] as const;
 
 export function Services() {
   const { t } = useI18n();
@@ -12,11 +18,11 @@ export function Services() {
     <Section id="services" className="bg-background py-16 md:py-24">
       <Container>
         {/* Header */}
-        <div className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
             {t("services.kicker")}
           </span>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
             {t("services.title")}
           </h2>
           <p className="mt-3 text-sm text-muted-foreground md:text-base">
@@ -24,44 +30,46 @@ export function Services() {
           </p>
         </div>
 
-        {/* Service list — 2 columns on larger screens */}
-        <div className="mt-12 grid border-t border-border sm:grid-cols-2">
-          {SERVICE_KEYS.map((key) => (
+        {/* Interactive cards */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map(({ key, icon: Icon }) => (
             <Link
               key={key}
               to="/order"
-              className="group flex items-start justify-between gap-4 border-b border-border py-6 transition hover:bg-muted/40 sm:px-2"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
             >
-              <div className="flex-1">
-                <p className="text-base font-semibold tracking-tight text-foreground transition group-hover:text-primary">
-                  {t(`services.${key}.t`)}
-                </p>
-                <p className="mt-1 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                  {t(`services.${key}.d`)}
-                </p>
-              </div>
-              <div className="flex shrink-0 flex-col items-end gap-2 pt-0.5">
-                <span className="text-sm font-semibold tabular-nums text-foreground">
+              {/* Hover gradient */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition group-hover:opacity-100"
+                style={{
+                  background:
+                    "linear-gradient(135deg, color-mix(in oklab, var(--primary) 8%, transparent) 0%, transparent 70%)",
+                }}
+              />
+
+              <div className="flex items-start justify-between">
+                <span className="inline-grid size-12 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Icon className="size-6" />
+                </span>
+                <span className="rounded-full bg-muted px-2.5 py-1 text-xs font-semibold tabular-nums text-foreground/80">
                   {t(`services.${key}.price`)}
                 </span>
-                <ArrowRight className="size-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" />
               </div>
+
+              <p className="mt-5 text-base font-semibold tracking-tight text-foreground transition group-hover:text-primary">
+                {t(`services.${key}.t`)}
+              </p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                {t(`services.${key}.d`)}
+              </p>
+
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                {t("services.learn") || "Learn more"}
+                <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+              </span>
             </Link>
           ))}
-        </div>
-
-        {/* Can't find CTA */}
-        <div className="mt-10 flex flex-col items-start gap-3 rounded-2xl border border-border bg-muted/30 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-foreground">{t("cantfind.title2")}</p>
-            <p className="mt-0.5 text-sm text-muted-foreground">{t("cantfind.sub2")}</p>
-          </div>
-          <Link
-            to="/#cantfind"
-            className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary transition hover:underline"
-          >
-            {t("cantfind.cta")} <ArrowRight className="size-4" />
-          </Link>
         </div>
       </Container>
     </Section>
