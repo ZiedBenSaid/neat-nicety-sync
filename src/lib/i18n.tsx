@@ -442,7 +442,10 @@ const dictionaries: Record<Lang, Dict> = {
     "trustbar.title": "12.000+ Kunden vertrauen uns — anerkannt von Behörden weltweit",
 
     // Acceptance guarantee
-   "guarantee.cta": "Jetzt übersetzen lassen",
+"guarantee.kicker": "Unser Versprechen",
+"guarantee.title": "Von jeder Behörde anerkannt — oder Geld zurück.",
+"guarantee.subtitle": "Drei Garantien, die CertiLingua zur sichersten Wahl für Ihre Dokumente machen.",
+"guarantee.cta": "Jetzt übersetzen lassen",
 "guarantee.footnote": "Oder volle Rückerstattung. Ohne Wenn und Aber.",
 "guarantee.point1.t": "Anerkannt oder Geld zurück",
 "guarantee.point1.d": "Volle Rückerstattung bei Ablehnung durch jede Behörde — garantiert, keine Bedingungen.",
