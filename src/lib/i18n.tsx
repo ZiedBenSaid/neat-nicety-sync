@@ -101,6 +101,9 @@ const dictionaries: Record<Lang, Dict> = {
     "trustbar.title": "Trusted by 12,000+ clients & accepted by official authorities worldwide",
 
     // AcceptanceGuarantee
+"guarantee.kicker": "Our Promise",
+"guarantee.title": "Accepted by every authority — or your money back.",
+"guarantee.subtitle": "Three guarantees that make CertiLingua the safest choice for your official documents.",
 "guarantee.cta": "Start your Translation",
 "guarantee.footnote": "Or full refund. No questions asked.",
 "guarantee.point1.t": "Accepted or refunded",
