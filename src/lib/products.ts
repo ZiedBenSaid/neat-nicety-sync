@@ -7,6 +7,8 @@ import docLicense from "@/assets/doc-license.jpg";
 import docSchool from "@/assets/doc-school.jpg";
 import docNamechange from "@/assets/doc-namechange.jpg";
 
+export type FAQItem = { q: string; a: string };
+
 export type Product = {
   slug: string;
   name: string;
@@ -19,7 +21,28 @@ export type Product = {
   short: string;
   description: string[];
   features: string[];
+  faqs?: FAQItem[];
 };
+
+const COMMON_FAQS: FAQItem[] = [
+  {
+    q: "Wird meine Übersetzung von Behörden in Deutschland anerkannt?",
+    a: "Ja. Alle Übersetzungen werden von in Deutschland öffentlich bestellten und beeidigten Übersetzern angefertigt und sind bei sämtlichen Behörden, Ämtern und Gerichten anerkannt.",
+  },
+  {
+    q: "Wie erhalte ich meine Übersetzung?",
+    a: "Sie erhalten die digitale beglaubigte Übersetzung als PDF per E-Mail. Auf Wunsch senden wir Ihnen das Original zusätzlich per Post (DHL) zu.",
+  },
+  {
+    q: "Wie lange dauert die Bearbeitung?",
+    a: "Standardlieferung erfolgt innerhalb von 24–48 Stunden. Mit Express-Option reduziert sich die Bearbeitungszeit um bis zu 75 %.",
+  },
+  {
+    q: "Wie kann ich bezahlen?",
+    a: "Wir akzeptieren Kreditkarte, PayPal, SEPA-Lastschrift, Klarna und Sofortüberweisung. Alle Zahlungen sind SSL-verschlüsselt.",
+  },
+];
+
 
 export const products: Product[] = [
   {
