@@ -280,6 +280,46 @@ function ProductPage() {
             </motion.div>
           </div>
 
+          {/* Product-specific FAQ */}
+          {product.faqs && product.faqs.length > 0 ? (
+            <section className="mt-20">
+              <div className="mx-auto max-w-3xl">
+                <div className="text-center">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+                    FAQ
+                  </span>
+                  <h2 className="mt-4 text-2xl font-bold tracking-tight md:text-3xl">
+                    Häufige Fragen zu {product.name}
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Antworten auf die wichtigsten Fragen rund um Ihre beglaubigte Übersetzung.
+                  </p>
+                </div>
+                <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-card">
+                  {product.faqs.map((f: { q: string; a: string }, i: number) => (
+                    <details
+                      key={i}
+                      className="group p-5 [&_summary::-webkit-details-marker]:hidden"
+                      open={i < 3}
+                    >
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+                        <span className="text-sm font-semibold text-foreground md:text-base">
+                          {f.q}
+                        </span>
+                        <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/10 text-primary transition group-open:rotate-45">
+                          <Plus className="size-4" />
+                        </span>
+                      </summary>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        {f.a}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ) : null}
+
           {/* Related */}
           <section className="mt-20">
             <h2 className="text-xl font-bold tracking-tight">You may also like</h2>
