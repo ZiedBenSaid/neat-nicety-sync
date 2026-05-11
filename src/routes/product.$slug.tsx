@@ -296,7 +296,7 @@ function ProductPage() {
                   </p>
                 </div>
                 <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-card">
-                  {product.faqs.map((f, i) => (
+                  {product.faqs.map((f: { q: string; a: string }, i: number) => (
                     <details
                       key={i}
                       className="group p-5 [&_summary::-webkit-details-marker]:hidden"
