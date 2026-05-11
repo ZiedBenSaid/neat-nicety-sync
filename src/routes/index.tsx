@@ -10,7 +10,7 @@ import { GermanProcess } from "@/components/landing/GermanProcess";
 import { GermanDocuments } from "@/components/landing/GermanDocuments";
 import { Languages } from "@/components/landing/Languages";
 import { CantFind } from "@/components/landing/CantFind";
-import { Services } from "@/components/landing/Services";
+
 import { WhyChoose } from "@/components/landing/WhyChoose";
 import { StickyMobileCTA } from "@/components/landing/StickyMobileCTA";
 
@@ -44,7 +44,7 @@ function Index() {
         <div id="contact">
           <CantFind />
         </div>
-        <Services />
+        
         <WhyChoose />
         <Languages />
         <div id="reviews">
