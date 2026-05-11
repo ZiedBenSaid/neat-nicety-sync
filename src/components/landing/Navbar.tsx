@@ -201,6 +201,41 @@ export function Navbar() {
                 <span>Warenkorb</span>
                 <span className="text-xs text-muted-foreground">{cart.count}</span>
               </Link>
+              <div className="mt-2 border-t border-border pt-2">
+                <p className="px-3 pb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  {lang === "DE" ? "Sprache" : "Language"}
+                </p>
+                <div className="flex gap-2 px-3">
+                  {langs.map((l) => {
+                    const isActive = l.code === active.code;
+                    return (
+                      <button
+                        key={l.code}
+                        onClick={() => {
+                          setLang(l.code);
+                          setMobileOpen(false);
+                        }}
+                        className={
+                          "flex flex-1 items-center justify-center gap-2 rounded-md border px-3 py-2 text-sm font-semibold transition " +
+                          (isActive
+                            ? "border-primary bg-primary/10 text-primary"
+                            : "border-border bg-card text-foreground/80 hover:border-primary/40")
+                        }
+                      >
+                        <span className="grid size-5 place-items-center overflow-hidden rounded-full ring-1 ring-border">
+                          <img
+                            src={`https://flagcdn.com/w40/${l.flag}.png`}
+                            alt=""
+                            className="size-full object-cover"
+                          />
+                        </span>
+                        <span>{l.label}</span>
+                        {isActive ? <Check className="size-3.5" /> : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </Container>
           </motion.div>
         ) : null}
