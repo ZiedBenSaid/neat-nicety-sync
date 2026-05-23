@@ -66,8 +66,7 @@ function CartPage() {
       return;
     }
     setLangError(false);
-    clear();
-    navigate({ to: "/thank-you" });
+    navigate({ to: "/checkout" });
   }
 
   function addFiles(list: FileList | null) {
