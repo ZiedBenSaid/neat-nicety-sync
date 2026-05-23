@@ -17,6 +17,7 @@ import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OrderRouteImport } from './routes/order'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as AgbRouteImport } from './routes/agb'
 import { Route as IndexRouteImport } from './routes/index'
@@ -62,6 +63,11 @@ const ImpressumRoute = ImpressumRouteImport.update({
   path: '/impressum',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/impressum': typeof ImpressumRoute
   '/order': typeof OrderRoute
   '/privacy': typeof PrivacyRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/impressum': typeof ImpressumRoute
   '/order': typeof OrderRoute
   '/privacy': typeof PrivacyRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/impressum': typeof ImpressumRoute
   '/order': typeof OrderRoute
   '/privacy': typeof PrivacyRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/agb'
     | '/cart'
+    | '/checkout'
     | '/impressum'
     | '/order'
     | '/privacy'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/agb'
     | '/cart'
+    | '/checkout'
     | '/impressum'
     | '/order'
     | '/privacy'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/agb'
     | '/cart'
+    | '/checkout'
     | '/impressum'
     | '/order'
     | '/privacy'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgbRoute: typeof AgbRoute
   CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   ImpressumRoute: typeof ImpressumRoute
   OrderRoute: typeof OrderRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -244,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpressumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cart': {
       id: '/cart'
       path: '/cart'
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgbRoute: AgbRoute,
   CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   ImpressumRoute: ImpressumRoute,
   OrderRoute: OrderRoute,
   PrivacyRoute: PrivacyRoute,
