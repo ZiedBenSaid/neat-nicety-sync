@@ -39,7 +39,7 @@ const LANGS = [
 ];
 
 function CartPage() {
-  const { items, subtotal, setPages, remove, count, clear } = useCart();
+  const { items, subtotal, setPages, remove, count } = useCart();
   const navigate = useNavigate();
   const [promo, setPromo] = useState("");
   const [discount, setDiscount] = useState(0);
@@ -66,8 +66,7 @@ function CartPage() {
       return;
     }
     setLangError(false);
-    clear();
-    navigate({ to: "/thank-you" });
+    navigate({ to: "/checkout" });
   }
 
   function addFiles(list: FileList | null) {
