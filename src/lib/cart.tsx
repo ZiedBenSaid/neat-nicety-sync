@@ -1,6 +1,8 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export type CartItem = {
+  /** Stable line-item id. Older carts may not have it; the provider migrates them on load. */
+  id: string;
   slug: string;
   name: string;
   price: number;
@@ -10,81 +12,166 @@ export type CartItem = {
   qty: number;
 };
 
+type AddCartItem = Omit<CartItem, "id" | "qty"> & { qty?: number; id?: string };
+
 type CartContextValue = {
   items: CartItem[];
   count: number;
   subtotal: number;
-  add: (item: Omit<CartItem, "qty"> & { qty?: number }) => void;
-  remove: (slug: string) => void;
-  setQty: (slug: string, qty: number) => void;
-  setPages: (slug: string, pages: number) => void;
+  isReady: boolean;
+  add: (item: AddCartItem) => void;
+  remove: (id: string) => void;
+  setQty: (id: string, qty: number) => void;
+  setPages: (id: string, pages: number) => void;
   clear: () => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
-const KEY = "certifypro-cart";
+const KEY = "certilingua-cart:v2";
+const LEGACY_KEY = "certifypro-cart";
+const MAX_QTY = 50;
+const MAX_PAGES = 500;
+
+type StoredCartItem = Partial<CartItem> & Pick<CartItem, "slug" | "name" | "price" | "image">;
+
+function clampNumber(value: unknown, fallback: number, min: number, max: number) {
+  const number = typeof value === "number" ? value : Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.min(max, Math.max(min, Math.floor(number)));
+}
+
+function makeLineId(item: Pick<CartItem, "slug" | "pages" | "expedited">) {
+  return `${item.slug}:${item.expedited ? "express" : "standard"}:${item.pages}`;
+}
+
+function normalizeItem(item: StoredCartItem): CartItem | null {
+  if (!item || typeof item !== "object") return null;
+  if (!item.slug || !item.name || typeof item.price !== "number" || !item.image) return null;
+
+  const pages = clampNumber(item.pages, 1, 1, MAX_PAGES);
+  const normalized: CartItem = {
+    id: item.id || makeLineId({ slug: item.slug, pages, expedited: Boolean(item.expedited) }),
+    slug: item.slug,
+    name: item.name,
+    price: Math.max(0, item.price),
+    image: item.image,
+    pages,
+    expedited: Boolean(item.expedited),
+    qty: clampNumber(item.qty, 1, 1, MAX_QTY),
+  };
+
+  return normalized;
+}
+
+function mergeDuplicateLines(items: CartItem[]) {
+  const byId = new Map<string, CartItem>();
+
+  for (const item of items) {
+    const id = item.id || makeLineId(item);
+    const existing = byId.get(id);
+    if (existing) {
+      byId.set(id, { ...existing, qty: clampNumber(existing.qty + item.qty, 1, 1, MAX_QTY) });
+    } else {
+      byId.set(id, { ...item, id });
+    }
+  }
+
+  return Array.from(byId.values());
+}
+
+function readStoredCart(): CartItem[] {
+  if (typeof window === "undefined") return [];
+
+  for (const key of [KEY, LEGACY_KEY]) {
+    try {
+      const raw = window.localStorage.getItem(key);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw) as unknown;
+      if (!Array.isArray(parsed)) continue;
+      const normalized = parsed
+        .map((item) => normalizeItem(item as StoredCartItem))
+        .filter(Boolean);
+      return mergeDuplicateLines(normalized as CartItem[]);
+    } catch {
+      // Corrupted localStorage should never break the checkout flow.
+    }
+  }
+
+  return [];
+}
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) setItems(JSON.parse(raw));
-    } catch {
-      /* ignore */
-    }
+    setItems(readStoredCart());
+    setIsReady(true);
   }, []);
 
   useEffect(() => {
+    if (!isReady || typeof window === "undefined") return;
     try {
-      localStorage.setItem(KEY, JSON.stringify(items));
+      window.localStorage.setItem(KEY, JSON.stringify(items));
+      window.localStorage.removeItem(LEGACY_KEY);
     } catch {
-      /* ignore */
+      // Ignore quota/private-mode failures; cart still works for this session.
     }
-  }, [items]);
+  }, [isReady, items]);
 
   const add: CartContextValue["add"] = (item) => {
+    const pages = clampNumber(item.pages, 1, 1, MAX_PAGES);
+    const qty = clampNumber(item.qty, 1, 1, MAX_QTY);
+    const nextItem: CartItem = {
+      ...item,
+      id: item.id || makeLineId({ slug: item.slug, pages, expedited: item.expedited }),
+      pages,
+      qty,
+    };
+
     setItems((prev) => {
-      const existing = prev.find((p) => p.slug === item.slug);
+      const existing = prev.find((p) => p.id === nextItem.id);
       if (existing) {
         return prev.map((p) =>
-          p.slug === item.slug ? { ...p, qty: p.qty + (item.qty ?? 1) } : p,
+          p.id === nextItem.id ? { ...p, qty: clampNumber(p.qty + qty, 1, 1, MAX_QTY) } : p,
         );
       }
-      return [...prev, { ...item, qty: item.qty ?? 1 }];
+      return [...prev, nextItem];
     });
   };
 
-  const remove: CartContextValue["remove"] = (slug) =>
-    setItems((prev) => prev.filter((p) => p.slug !== slug));
+  const remove: CartContextValue["remove"] = (id) =>
+    setItems((prev) => prev.filter((p) => p.id !== id));
 
-  const setQty: CartContextValue["setQty"] = (slug, qty) =>
+  const setQty: CartContextValue["setQty"] = (id, qty) =>
     setItems((prev) =>
-      prev
-        .map((p) => (p.slug === slug ? { ...p, qty: Math.max(1, qty) } : p))
-        .filter((p) => p.qty > 0),
+      prev.map((p) => (p.id === id ? { ...p, qty: clampNumber(qty, 1, 1, MAX_QTY) } : p)),
     );
 
-  const setPages: CartContextValue["setPages"] = (slug, pages) =>
+  const setPages: CartContextValue["setPages"] = (id, pages) =>
     setItems((prev) =>
-      prev.map((p) => (p.slug === slug ? { ...p, pages: Math.max(1, pages) } : p)),
+      prev.map((p) => (p.id === id ? { ...p, pages: clampNumber(pages, 1, 1, MAX_PAGES) } : p)),
     );
 
   const clear = () => setItems([]);
 
-  const subtotal = items.reduce((sum, i) => {
-    const line = (i.price + (i.expedited ? 30 : 0)) * i.pages * i.qty;
-    return sum + line;
-  }, 0);
-
-  const count = items.reduce((n, i) => n + i.qty, 0);
-
-  return (
-    <CartContext.Provider value={{ items, count, subtotal, add, remove, setQty, setPages, clear }}>
-      {children}
-    </CartContext.Provider>
+  const subtotal = useMemo(
+    () =>
+      items.reduce((sum, i) => {
+        const line = (i.price + (i.expedited ? 30 : 0)) * i.pages * i.qty;
+        return sum + line;
+      }, 0),
+    [items],
   );
+
+  const count = useMemo(() => items.reduce((n, i) => n + i.qty, 0), [items]);
+
+  const value = useMemo<CartContextValue>(
+    () => ({ items, count, subtotal, isReady, add, remove, setQty, setPages, clear }),
+    [items, count, subtotal, isReady],
+  );
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {

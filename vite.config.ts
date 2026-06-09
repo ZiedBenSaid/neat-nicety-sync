@@ -12,4 +12,21 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes("node_modules")) return undefined;
+            if (id.includes("@tanstack")) return "vendor-tanstack";
+            if (id.includes("framer-motion")) return "vendor-motion";
+            if (id.includes("@radix-ui")) return "vendor-radix";
+            if (id.includes("lucide-react")) return "vendor-icons";
+            if (id.includes("react") || id.includes("scheduler")) return "vendor-react";
+            return "vendor";
+          },
+        },
+      },
+    },
+  },
 });
